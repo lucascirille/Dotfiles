@@ -635,6 +635,17 @@ require('lazy').setup({
         },
         omnisharp = {
           cmd = { 'dotnet', '/usr/local/etc/omnisharp/OmniSharp.dll' },
+          flietypes = { 'cs' },
+          capabilities = {
+            textDocument = {
+              completion = {
+                completionItem = {
+                  -- Enables snippets support in completion items
+                  snippetSupport = true,
+                },
+              },
+            },
+          },
           settings = {
             FormattingOptions = {
               -- Enables support for reading code style, naming convention and analyzer
@@ -673,6 +684,14 @@ require('lazy').setup({
               IncludePrereleases = true,
             },
           },
+        },
+        -- rust_analyzer = {
+        --   diagnostics = {
+        --     enable = false,
+        --   },
+        -- },
+        ts_ls = {
+          filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', 'mjs' },
         },
       }
 
@@ -742,6 +761,10 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         cs = { 'csharpier' },
+        javascript = { 'prettier' },
+        typescript = { 'prettier' },
+        javascriptreact = { 'prettier' },
+        typescriptreact = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -771,12 +794,12 @@ require('lazy').setup({
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
       },
       'saadparwaiz1/cmp_luasnip',
