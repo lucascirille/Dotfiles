@@ -164,6 +164,9 @@ vim.opt.scrolloff = 10
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- shortcut save
+vim.keymap.set('n', '<leader>a', ':w<CR>', { desc = 'Guardar archivo' })
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -634,7 +637,7 @@ require('lazy').setup({
           },
         },
         omnisharp = {
-          cmd = { 'dotnet', '/usr/local/etc/omnisharp/OmniSharp.dll' },
+          cmd = { 'dotnet', '/home/dneit/tools/omnisharp/OmniSharp.dll' },
           flietypes = { 'cs' },
           capabilities = {
             textDocument = {
